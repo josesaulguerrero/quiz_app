@@ -1,7 +1,7 @@
 import {
 	Column,
 	Entity,
-	ManyToMany,
+	ManyToOne,
 	OneToMany,
 	PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -17,7 +17,7 @@ export class Question {
 	@Column({ type: 'text' })
 	content: string;
 
-	@ManyToMany(() => Category, (category) => category.questions)
+	@ManyToOne(() => Category, (category) => category.questions)
 	category: Category;
 
 	@OneToMany(() => Answer, (answer) => answer.id)
