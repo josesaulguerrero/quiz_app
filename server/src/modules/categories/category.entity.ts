@@ -10,6 +10,9 @@ export class Category {
 	@Column({ type: 'varchar', length: 100 })
 	name: string;
 
+	@Column({ type: 'varchar' })
+	difficulty: string;
+
 	@OneToMany(() => Question, (question) => question.category)
 	questions: Question[];
 }
