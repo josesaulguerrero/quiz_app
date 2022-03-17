@@ -36,3 +36,4 @@ lerna-debug.log*
 
 #custom files
 postgres_data/
+.env
