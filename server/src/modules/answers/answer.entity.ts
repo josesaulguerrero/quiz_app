@@ -8,7 +8,7 @@ export class Answer {
 	id: number;
 
 	@Column({ type: 'varchar', length: 255 })
-	text: string;
+	content: string;
 
 	@Column({ type: 'boolean' })
 	isCorrect: boolean;
