@@ -1,6 +1,8 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { Type } from 'class-transformer';
 import {
+	ArrayMaxSize,
+	ArrayMinSize,
 	IsArray,
 	IsNotEmpty,
 	IsNumber,
@@ -19,6 +21,8 @@ export class CreateQuestionDTO {
 	categoryId: number;
 
 	@IsArray()
+	@ArrayMaxSize(4)
+	@ArrayMinSize(4)
 	@IsNotEmpty()
 	@Type(() => Number)
 	answersIds: number[];
