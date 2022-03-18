@@ -1,3 +1,5 @@
+// interface IGameContext {}
+
 export enum gameStates {
 	INITIAL = 'INITIAL',
 	PLAYING = 'PLAYING',
