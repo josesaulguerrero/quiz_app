@@ -1,10 +1,10 @@
-enum gameStates {
+export enum gameStates {
 	INITIAL = 'INITIAL',
 	PLAYING = 'PLAYING',
 	GAME_OVER = 'GAME_OVER',
 }
 
-enum gameRounds {
+export enum gameRounds {
 	FIRST = 1,
 	SECOND = 2,
 	THIRD = 3,

@@ -1,4 +1,5 @@
-import { createContext, FC, useState } from 'react';
+import React, { createContext, FC, useState } from 'react';
+import { gameRounds, gameStates } from '../@types';
 
 export const GameContext = createContext<string>(null!);
 
@@ -8,7 +9,8 @@ export const GameContextProvider: FC = ({ children }) => {
 	const [hasWon, setHasWon] = useState<boolean>(false);
 	const [round, setRound] = useState<gameRounds>(gameRounds.FIRST);
 	const [points, setPoints] = useState<number>(0);
-	const categories = ''; //we'll fetch some data later
+	const categories = '';
+	// we'll fetch some data later
 	const questions = '';
 	/*
       1. set the initial config (username)
@@ -19,7 +21,5 @@ export const GameContextProvider: FC = ({ children }) => {
       6. show hall of fame if the player won
       7. show game over screen if the player lost
    */
-	return (
-		<GameContext.Provider value={'hello'}>{children}</GameContext.Provider>
-	);
+	return <GameContext.Provider value="hello">{children}</GameContext.Provider>;
 };
