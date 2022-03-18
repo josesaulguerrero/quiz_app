@@ -11,7 +11,7 @@ async function bootstrap() {
 			forbidUnknownValues: true,
 		}),
 	);
-	await app.listen(parseInt(process.env.PORT) || 3000, () => {
+	await app.listen(parseInt(process.env.PORT), () => {
 		console.log(`app running at port ${process.env.PORT}`);
 	});
 }
