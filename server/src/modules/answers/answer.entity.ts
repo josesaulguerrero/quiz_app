@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+	Column,
+	Entity,
+	JoinColumn,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+} from 'typeorm';
 //local modules
 import { Question } from '../questions/question.entity';
 
@@ -14,5 +20,6 @@ export class Answer {
 	isCorrect: boolean;
 
 	@ManyToOne(() => Question, (question) => question.answers)
+	@JoinColumn({ name: 'question_id' })
 	question: Question;
 }

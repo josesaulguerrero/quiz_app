@@ -1,6 +1,7 @@
 import {
 	Column,
 	Entity,
+	JoinColumn,
 	ManyToOne,
 	OneToMany,
 	PrimaryGeneratedColumn,
@@ -18,9 +19,10 @@ export class Question {
 	content: string;
 
 	@ManyToOne(() => Category, (category) => category.questions)
+	@JoinColumn({ name: 'category_id' })
 	category: Category;
 
-	@OneToMany(() => Answer, (answer) => answer.id, {
+	@OneToMany(() => Answer, (answer) => answer.question, {
 		onDelete: 'CASCADE',
 	})
 	answers: Answer[];
