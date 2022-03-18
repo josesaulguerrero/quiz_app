@@ -9,6 +9,7 @@ import {
 	IsPositive,
 	IsString,
 } from 'class-validator';
+import { CreateAnswerDTO } from '../answers/answer.dto';
 
 export class CreateQuestionDTO {
 	@IsString()
@@ -24,7 +25,7 @@ export class CreateQuestionDTO {
 	@ArrayMaxSize(4)
 	@ArrayMinSize(4)
 	@IsNotEmpty()
-	@Type(() => Number)
+	@Type(() => CreateAnswerDTO)
 	answersIds: number[];
 }
 
