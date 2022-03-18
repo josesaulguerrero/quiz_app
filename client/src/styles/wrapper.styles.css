@@ -1,0 +1,14 @@
+.Wrapper {
+	--background-color: rgb(245, 246, 248);
+
+	width: 90%;
+	max-width: 400px;
+	height: fit-content;
+	min-height: 200px;
+	position: absolute;
+	inset: 50% 0 0 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--background-color);
+	border-radius: 5px;
+	box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.2);
+}

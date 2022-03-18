@@ -1,10 +1,7 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+// local modules
+import '../styles/wrapper.styles.css';
 
 export const Wrapper: FC = ({ children }) => {
-	return (
-		<main className="Wrapper">
-			<h1>hello</h1>
-			{children}
-		</main>
-	);
+	return <main className="Wrapper">{children}</main>;
 };
