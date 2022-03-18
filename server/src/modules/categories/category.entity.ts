@@ -10,8 +10,8 @@ export class Category {
 	@Column({ type: 'varchar', length: 100, unique: true })
 	name: string;
 
-	@Column({ type: 'varchar', unique: true })
-	difficulty: string;
+	@Column({ type: 'int', name: 'difficulty_level', unique: true })
+	difficultyLevel: number;
 
 	@OneToMany(() => Question, (question) => question.category)
 	questions: Question[];
