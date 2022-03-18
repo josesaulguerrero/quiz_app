@@ -9,7 +9,9 @@ module.exports = {
 	cli: {
 		migrationsDir: 'src/modules/database/migrations',
 	},
-	// ssl: {
-	// 	rejectUnauthorized: false,
-	// },
+	ssl: process.env.DYNO
+		? {
+				rejectUnauthorized: false,
+		  }
+		: false,
 };

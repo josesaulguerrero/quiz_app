@@ -12,6 +12,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 					url: configService.get('DATABASE_URL'),
 					synchronize: false,
 					autoLoadEntities: true,
+					ssl: process.env.DYNO
+						? {
+								rejectUnauthorized: false,
+						  }
+						: false,
 				};
 			},
 			inject: [ConfigService],
