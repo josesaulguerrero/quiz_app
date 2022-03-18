@@ -1,8 +1,8 @@
-import { createContext, useState } from 'react';
+import { createContext, FC, useState } from 'react';
 
-const GameContext = createContext<string>(null!);
+export const GameContext = createContext<string>(null!);
 
-const GameContextProvider = () => {
+export const GameContextProvider: FC = ({ children }) => {
 	const [gameState, setGameState] = useState<gameStates>(gameStates.INITIAL);
 	const [username, setUsername] = useState<string>(null!);
 	const [hasWon, setHasWon] = useState<boolean>(false);
@@ -19,5 +19,7 @@ const GameContextProvider = () => {
       6. show hall of fame if the player won
       7. show game over screen if the player lost
    */
-	return <GameContext.Provider value={'hello'}></GameContext.Provider>;
+	return (
+		<GameContext.Provider value={'hello'}>{children}</GameContext.Provider>
+	);
 };
