@@ -11,4 +11,4 @@ export class CreateCategoryDTO {
 	difficulty: string;
 }
 
-export class UpdateQuestionDTO extends PartialType(CreateCategoryDTO) {}
+export class UpdateCategoryDTO extends PartialType(CreateCategoryDTO) {}
