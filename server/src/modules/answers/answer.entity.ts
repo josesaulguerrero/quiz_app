@@ -19,7 +19,10 @@ export class Answer {
 	@Column({ type: 'boolean', nullable: false })
 	isCorrect: boolean;
 
-	@ManyToOne(() => Question, (question) => question.answers)
+	@ManyToOne(() => Question, (question) => question.answers, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	@JoinColumn({ name: 'question_id' })
 	question: Question;
 }

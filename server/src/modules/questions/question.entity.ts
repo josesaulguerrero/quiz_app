@@ -18,12 +18,13 @@ export class Question {
 	@Column({ type: 'text', unique: true, nullable: false })
 	content: string;
 
-	@ManyToOne(() => Category, (category) => category.questions)
+	@ManyToOne(() => Category, (category) => category.questions, {
+		onDelete: 'CASCADE',
+		onUpdate: 'CASCADE',
+	})
 	@JoinColumn({ name: 'category_id' })
 	category: Category;
 
-	@OneToMany(() => Answer, (answer) => answer.question, {
-		onDelete: 'CASCADE',
-	})
+	@OneToMany(() => Answer, (answer) => answer.question)
 	answers: Answer[];
 }

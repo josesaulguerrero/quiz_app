@@ -37,15 +37,15 @@ export class QuestionsService {
 		newQuestion.category = await this.categoriesService.findOneById(
 			questionData.categoryId,
 		);
-		const createdQuestion = await this.questionRepository.save(newQuestion);
+		const savedQuestion = await this.questionRepository.save(newQuestion);
 		//now we add the answers to the already existing question
 		questionData.answers.forEach(async (answerData) => {
 			const newAnswer = await this.answersService.create({
 				...answerData,
-				question: createdQuestion,
+				question: savedQuestion,
 			});
-			newQuestion.answers.push(newAnswer);
+			savedQuestion.answers.push(newAnswer);
 		});
-		return this.questionRepository.save(createdQuestion);
+		return this.questionRepository.save(savedQuestion);
 	}
 }

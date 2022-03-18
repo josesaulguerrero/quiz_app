@@ -13,8 +13,6 @@ export class Category {
 	@Column({ type: 'varchar', unique: true })
 	difficulty: string;
 
-	@OneToMany(() => Question, (question) => question.category, {
-		onDelete: 'CASCADE',
-	})
+	@OneToMany(() => Question, (question) => question.category)
 	questions: Question[];
 }
