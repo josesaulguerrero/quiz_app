@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Get,
+	Param,
+	ParseIntPipe,
+	Post,
+} from '@nestjs/common';
 import { CreateQuestionDTO } from './question.dto';
 import { QuestionsService } from './questions.service';
 
@@ -9,6 +16,11 @@ export class QuestionsController {
 	@Get()
 	findAll() {
 		return this.questionsService.findAll();
+	}
+
+	@Get(':questionId')
+	findOneById(@Param('questionId', ParseIntPipe) questionId: number) {
+		return this.questionsService.findOneById(questionId);
 	}
 
 	@Post()

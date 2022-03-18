@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { AnswersService } from '../answers/answers.service';
 import { CategoriesService } from '../categories/categories.service';
 import { CreateQuestionDTO } from './question.dto';
+import { CreateAnswerDTO } from '../answers/answer.dto';
 import { Question } from './question.entity';
 
 @Injectable()
@@ -39,13 +40,13 @@ export class QuestionsService {
 		);
 		const savedQuestion = await this.questionRepository.save(newQuestion);
 		//now we add the answers to the already existing question
-		questionData.answers.forEach(async (answerData) => {
-			const newAnswer = await this.answersService.create({
+		const answersData: CreateAnswerDTO[] = questionData.answers.map(
+			(answerData) => ({
 				...answerData,
 				question: savedQuestion,
-			});
-			savedQuestion.answers.push(newAnswer);
-		});
+			}),
+		);
+		savedQuestion.answers = await this.answersService.createMany(answersData);
 		return this.questionRepository.save(savedQuestion);
 	}
 }

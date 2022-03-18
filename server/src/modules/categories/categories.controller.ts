@@ -22,7 +22,7 @@ export class CategoriesController {
 
 	@Get(':categoryId')
 	findOne(@Param('categoryId', ParseIntPipe) categoryId: number) {
-		return this.categoriesService.findOneById(categoryId);
+		return this.categoriesService.findOneById(categoryId, true);
 	}
 
 	@Post()

@@ -19,8 +19,22 @@ export class AnswersService {
 		return answer;
 	}
 
-	async create(answerData: CreateAnswerDTO): Promise<Answer> {
-		const newAnswer = this.answersRepository.create(answerData);
-		return this.answersRepository.save(newAnswer);
+	async createMany(answersData: CreateAnswerDTO[]) {
+		const answers: Answer[] = answersData.map(
+			(answerData): Answer => this.answersRepository.create(answerData),
+		);
+		return await this.saveMany(answers);
+	}
+
+	saveMany(answers: Answer[]) {
+		const savedAnswers = answers.map((answer) =>
+			this.answersRepository.save(answer),
+		);
+		return Promise.all(savedAnswers).then((answers) => {
+			return answers.map((answer) => {
+				delete answer.question;
+				return answer;
+			});
+		});
 	}
 }
