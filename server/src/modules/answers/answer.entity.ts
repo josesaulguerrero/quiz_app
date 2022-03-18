@@ -20,6 +20,7 @@ export class Answer {
 	isCorrect: boolean;
 
 	@ManyToOne(() => Question, (question) => question.answers, {
+		cascade: true,
 		onDelete: 'CASCADE',
 		onUpdate: 'CASCADE',
 	})

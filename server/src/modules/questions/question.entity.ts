@@ -19,6 +19,7 @@ export class Question {
 	content: string;
 
 	@ManyToOne(() => Category, (category) => category.questions, {
+		cascade: true,
 		onDelete: 'CASCADE',
 		onUpdate: 'CASCADE',
 	})

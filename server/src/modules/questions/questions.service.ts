@@ -23,9 +23,12 @@ export class QuestionsService {
 		});
 	}
 
-	async findOneById(questionId: number): Promise<Question> {
+	async findOneById(
+		questionId: number,
+		includeRelations = false,
+	): Promise<Question> {
 		const question = await this.questionRepository.findOne(questionId, {
-			relations: ['answers'],
+			relations: includeRelations ? ['answers'] : [],
 		});
 		if (!question) {
 			throw new NotFoundException('Question not found...');
@@ -48,5 +51,11 @@ export class QuestionsService {
 		);
 		savedQuestion.answers = await this.answersService.createMany(answersData);
 		return this.questionRepository.save(savedQuestion);
+	}
+
+	async delete(questionId: number) {
+		const question = await this.findOneById(questionId, false);
+		await this.questionRepository.delete(question);
+		return question;
 	}
 }
