@@ -4,6 +4,7 @@ const GameContext = createContext<string>(null!);
 
 const GameContextProvider = () => {
 	const [gameState, setGameState] = useState<gameStates>(gameStates.INITIAL);
+	const [username, setUsername] = useState<string>(null!);
 	const [hasWon, setHasWon] = useState<boolean>(false);
 	const [round, setRound] = useState<gameRounds>(gameRounds.FIRST);
 	const [points, setPoints] = useState<number>(0);
