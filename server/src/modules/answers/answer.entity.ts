@@ -13,10 +13,10 @@ export class Answer {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column({ type: 'varchar', length: 255 })
+	@Column({ type: 'varchar', length: 255, nullable: false })
 	content: string;
 
-	@Column({ type: 'boolean' })
+	@Column({ type: 'boolean', nullable: false })
 	isCorrect: boolean;
 
 	@ManyToOne(() => Question, (question) => question.answers)

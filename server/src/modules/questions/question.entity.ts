@@ -15,7 +15,7 @@ export class Question {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column({ type: 'text' })
+	@Column({ type: 'text', unique: true, nullable: false })
 	content: string;
 
 	@ManyToOne(() => Category, (category) => category.questions)

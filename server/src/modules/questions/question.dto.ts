@@ -26,7 +26,7 @@ export class CreateQuestionDTO {
 	@ArrayMinSize(4)
 	@IsNotEmpty()
 	@Type(() => CreateAnswerDTO)
-	answersIds: number[];
+	answers: CreateAnswerDTO[];
 }
 
 export class UpdateQuestionDTO extends PartialType(CreateQuestionDTO) {}
