@@ -1,0 +1,70 @@
+.welcome {
+	width: 100%;
+	height: 90vh;
+	max-height: 450px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	/* background-color: rgb(255, 177, 177); */
+}
+
+.welcomeTitle {
+	font-size: 3rem;
+	text-align: center;
+	padding: 0 10px;
+}
+
+.welcomeImage {
+	margin: 30px 0;
+}
+
+.welcomeForm {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.welcomeLabel {
+	width: 100%;
+	max-width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin: 0 0 15px 0;
+	padding: 0 15px;
+}
+
+.welcomeInput {
+	width: 100%;
+	margin: 5px 0 2px;
+	padding: 8px 15px;
+	border: none;
+	border-radius: 5px;
+	/* outline: solid 1px var(--main-color); */
+	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.welcomeInput:focus {
+	outline: solid 2px var(--main-color);
+}
+
+.welcomeError {
+	font-size: 1.5rem;
+	color: var(--error-color);
+}
+
+.welcomeButton {
+	width: 60%;
+	max-width: 200px;
+	font-weight: 500;
+	font-size: 2rem;
+	color: var(--white-font-color);
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--main-color);
+}

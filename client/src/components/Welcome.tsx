@@ -3,6 +3,8 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { gameStates, IGameContext } from '../@types';
 import { GameContext } from '../context/game.context';
 import { useFetch } from '../hooks/useFetch';
+import triviaImage from '../assets/science.png';
+import '../styles/welcome.styles.css';
 
 export const Welcome: FC = () => {
 	const { setUsername, setGameState } = useContext<IGameContext>(GameContext);
@@ -16,7 +18,9 @@ export const Welcome: FC = () => {
 		setInputData(event.target.value);
 	};
 
-	const onClick = () => {
+	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		if (!inputData.trim()) return;
 		fetchPlayer();
 	};
 
@@ -29,28 +33,36 @@ export const Welcome: FC = () => {
 	}, [playerRequestState]);
 	return (
 		<section className="welcome">
-			<h1>Welcome to Funny Trivia!</h1>
-			<label htmlFor="nickname">
-				Your nickname
-				<input
-					type="text"
-					name="nickname"
-					id="nickname"
-					placeholder="e.g. Alex92"
-					onChange={onChange}
-				/>
-			</label>
-			{(data as Array<unknown>)?.length >= 1 && (
-				<p className="error">username is not available...</p>
-			)}
-			<button
-				className="welcomeButton"
-				type="button"
-				disabled={!inputData.trim() || loading}
-				onClick={onClick}
-			>
-				Let&apos;s get started!
-			</button>
+			<h1 className="welcomeTitle">Welcome to Funny Trivia!</h1>
+			<img
+				className="welcomeImage"
+				src={triviaImage}
+				alt="trivia time"
+				width="100px"
+			/>
+			<form className="welcomeForm" onSubmit={onSubmit}>
+				<label htmlFor="nickname" className="welcomeLabel">
+					Your nickname
+					<input
+						className="welcomeInput"
+						type="text"
+						name="nickname"
+						id="nickname"
+						placeholder="e.g. Alex92"
+						onChange={onChange}
+					/>
+					{(data as Array<unknown>)?.length >= 1 && (
+						<span className="welcomeError">username is not available...</span>
+					)}
+				</label>
+				<button
+					className="welcomeButton"
+					type="submit"
+					disabled={!inputData.trim() || loading}
+				>
+					Let&apos;s get started!
+				</button>
+			</form>
 		</section>
 	);
 };

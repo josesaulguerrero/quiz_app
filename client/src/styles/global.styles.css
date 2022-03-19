@@ -14,6 +14,9 @@ html {
 
 :root {
 	--background-color: rgb(238, 247, 255);
+	--white-font-color: rgb(240, 249, 255);
+	--main-color: #8b80b6;
+	--error-color: rgb(255, 113, 113);
 }
 
 body {
@@ -23,4 +26,23 @@ body {
 	position: relative;
 	background-color: var(--background-color);
 	overflow: hidden;
+}
+
+[class*='Button'],
+[class*='button'] {
+	cursor: pointer;
+	transition: transform 0.2s, opacity 0.2s;
+}
+
+[class*='Button']:disabled,
+[class*='button']:disabled {
+	cursor: not-allowed;
+	opacity: 0.7;
+}
+
+@media (hover: hover) {
+	[class*='Button']:hover:not(:disabled),
+	[class*='button']:hover:not(:disabled) {
+		transform: scale(1.05);
+	}
 }

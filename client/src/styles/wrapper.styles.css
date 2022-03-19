@@ -7,8 +7,10 @@
 	min-height: 200px;
 	position: absolute;
 	inset: 50% 0 0 50%;
+	padding: 20px;
 	transform: translate(-50%, -50%);
 	background-color: var(--background-color);
 	border-radius: 5px;
 	box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
 }
