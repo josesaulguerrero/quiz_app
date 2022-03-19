@@ -5,6 +5,7 @@ import { Wrapper } from '../components/Wrapper';
 import { gameStates, IGameContext } from '../@types';
 import { GameContext } from '../context/game.context';
 import { QuizCard } from '../components/QuizCard';
+import { Fail } from '../components/Fail';
 
 export const App: FC = () => {
 	const { gameState, hasWon } = useContext<IGameContext>(GameContext);
@@ -17,9 +18,7 @@ export const App: FC = () => {
 				{gameState === gameStates.GAME_OVER && hasWon === true && (
 					<p>You won!</p>
 				)}
-				{gameState === gameStates.GAME_OVER && hasWon === false && (
-					<p>Loserrrr</p>
-				)}
+				{gameState === gameStates.GAME_OVER && hasWon === false && <Fail />}
 			</Wrapper>
 		</div>
 	);
