@@ -17,6 +17,7 @@ html {
 	--white-color: rgb(240, 249, 255);
 	--main-color: #8b80b6;
 	--error-color: rgb(255, 113, 113);
+	--alright-color: rgb(138, 248, 138);
 }
 
 body {
@@ -28,14 +29,14 @@ body {
 	overflow-x: hidden;
 }
 
-[class*='Button'],
-[class*='button'] {
+button[class*='Button'],
+button[class*='button'] {
 	cursor: pointer;
 	transition: transform 0.2s, opacity 0.2s;
 }
 
-[class*='Button']:disabled,
-[class*='button']:disabled {
+button[class*='Button']:disabled,
+button[class*='button']:disabled {
 	cursor: not-allowed;
 	opacity: 0.7;
 }

@@ -1,0 +1,22 @@
+.nextButton.correct {
+	--main-color: var(--alright-color);
+}
+
+.nextButton.wrong {
+	--main-color: var(--error-color);
+	color: var(--white-color);
+}
+
+.nextButton {
+	--main-color: rgb(206, 206, 206);
+
+	width: 45%;
+	max-width: 150px;
+	align-self: center;
+	font-weight: bold;
+	border: none;
+	padding: 10px;
+	margin: 20px 0 0 0;
+	background-color: var(--main-color);
+	border-radius: 5px;
+}

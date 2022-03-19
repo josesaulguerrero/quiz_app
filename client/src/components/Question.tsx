@@ -52,19 +52,21 @@ export const Question: FC<IQuestionProps> = ({
 		<form onSubmit={onSubmit} className="question">
 			<h3 className="questionContent">{randomQuestion.content}</h3>
 			{renderAnswers(randomQuestion.answers)}
-			<button
-				type="submit"
-				className="questionCheckButton"
-				disabled={!selectedAnswer || isCorrect !== null}
-			>
-				Check
-			</button>
-			<NextButton
-				isCorrect={isCorrect as boolean}
-				setIsCorrect={setIsCorrect}
-				setQuestion={setRandomQuestion}
-				setSelectedAnswer={setSelectedAnswer}
-			/>
+			<section className="buttons">
+				<button
+					type="submit"
+					className="questionCheckButton"
+					disabled={!selectedAnswer || isCorrect !== null}
+				>
+					Check
+				</button>
+				<NextButton
+					isCorrect={isCorrect as boolean}
+					setIsCorrect={setIsCorrect}
+					setQuestion={setRandomQuestion}
+					setSelectedAnswer={setSelectedAnswer}
+				/>
+			</section>
 		</form>
 	);
 };

@@ -17,11 +17,15 @@
 
 .answer.correct.selected,
 .answer.correct {
-	background-color: green;
+	/* the correct answer will be highlighted no matter what */
+	background-color: var(--alright-color);
+	color: unset;
+	font-weight: bold;
 }
 
 .answer.wrong.selected {
-	background-color: red;
+	/* but the wrong answer will be highlighted only if it was chosen */
+	background-color: var(--error-color);
 }
 /* end --------------------------------------------------------------------- */
 

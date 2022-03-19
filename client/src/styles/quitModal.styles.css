@@ -58,7 +58,7 @@
 	--background-color: var(--error-color);
 }
 .quitModalButton.cancel {
-	--background-color: rgb(62, 209, 62);
+	--background-color: var(--alright-color);
 }
 
 @keyframes fadeIn {

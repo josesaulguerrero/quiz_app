@@ -8,6 +8,7 @@ import {
 	IQuestion,
 } from '../@types';
 import { GameContext } from '../context/game.context';
+import '../styles/nextButton.styles.css';
 
 interface INextButtonProps {
 	isCorrect: boolean | null;
@@ -51,9 +52,18 @@ export const NextButton: FC<INextButtonProps> = ({
 		onCorrectAnswer();
 	};
 
+	const getClass = () => {
+		return isCorrect ? 'correct' : 'wrong';
+	};
+
 	return (
-		<button onClick={onNext} type="button" disabled={isCorrect === null}>
-			next
+		<button
+			className={`nextButton ${isCorrect !== null && getClass()}`}
+			onClick={onNext}
+			type="button"
+			disabled={isCorrect === null}
+		>
+			Next
 		</button>
 	);
 };

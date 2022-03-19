@@ -13,10 +13,17 @@
 	margin: 0 0 20px 0;
 }
 
+.buttons {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .questionCheckButton {
 	--main-color: rgb(248, 165, 55);
 
-	width: 100%;
+	width: 45%;
 	max-width: 150px;
 	align-self: center;
 	font-weight: bold;
