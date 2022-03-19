@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 // local modules
 import { gameRounds, IBasicCategory } from '../@types';
+import { QuitModal } from './QuitModal';
 import quitImage from '../assets/quit.png';
 import '../styles/header.styles.css';
 
@@ -23,14 +24,14 @@ export const Header: FC<IHeaderProps> = ({
 
 	return (
 		<header className="header">
-			<button onClick={onOpenQuitModal} className="quitButton">
+			<button onClick={onOpenQuitModal} className="quit">
 				<img src={quitImage} alt="quit" width="40" />
 			</button>
 			<span className="headerRound">
 				round {round} - {name}
 			</span>
 			<span className="headerPoints">points - {points}</span>
-			{isModalOpen && <p>sth</p>}
+			{isModalOpen && <QuitModal />}
 		</header>
 	);
 };

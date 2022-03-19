@@ -6,7 +6,7 @@
 	justify-content: space-between;
 }
 
-.quitButton {
+.quit {
 	--button-size: 40px;
 
 	width: var(--button-size);
@@ -18,11 +18,12 @@
 	inset: 0% 0% 100% 100%;
 	border: none;
 	transform: translate(-50%, -50%);
+	transition: transform 0.2s;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
-/* needed this selector to override the global style */
-.header .quitButton:hover {
+.quit:hover {
 	transform: translate(-50%, -50%) scale(1.05);
 }
 
