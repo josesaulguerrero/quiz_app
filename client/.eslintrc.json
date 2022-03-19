@@ -42,7 +42,8 @@
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"react/function-component-definition": "off",
-		"import/prefer-default-export": "off"
+		"import/prefer-default-export": "off",
+		"react/jsx-no-constructed-context-values": "off"
 	},
 	"settings": {
 		"import/resolver": {

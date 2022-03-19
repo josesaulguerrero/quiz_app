@@ -1,13 +1,19 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
+// local modules
+import { gameStates, IGameContext } from '../@types';
+import { GameContext } from '../context/game.context';
 
 export const Welcome: FC = () => {
 	const [inputData, setInputData] = useState<string>('');
+	const { setUsername, setGameState } = useContext<IGameContext>(GameContext);
+
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setInputData(event.target.value);
 	};
 
 	const onClick = () => {
-		return 'hello';
+		setUsername(inputData);
+		setGameState(gameStates.PLAYING);
 	};
 
 	return (

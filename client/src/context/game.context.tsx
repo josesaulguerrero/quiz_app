@@ -1,4 +1,4 @@
-import React, { createContext, FC, useEffect, useState } from 'react';
+import React, { createContext, FC, useEffect, useMemo, useState } from 'react';
 // local modules
 import { gameRounds, gameStates, IGameContext } from '../@types';
 import { useFetch } from '../hooks/useFetch';
@@ -32,23 +32,19 @@ export const GameContextProvider: FC = ({ children }) => {
 	useEffect(() => {
 		console.log(categoriesRequestState);
 	}, [categoriesRequestState]);
-	return (
-		<GameContext.Provider
-			value={{
-				gameState,
-				setGameState,
-				hasWon,
-				setHasWon,
-				points,
-				setPoints,
-				round,
-				setRound,
-				username,
-				setUsername,
-				categories: categoriesRequestState,
-			}}
-		>
-			{children}
-		</GameContext.Provider>
-	);
+
+	const value = {
+		gameState,
+		setGameState,
+		hasWon,
+		setHasWon,
+		points,
+		setPoints,
+		round,
+		setRound,
+		username,
+		setUsername,
+		categories: categoriesRequestState,
+	};
+	return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 };
