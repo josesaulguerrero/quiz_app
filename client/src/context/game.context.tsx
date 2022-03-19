@@ -11,6 +11,9 @@ export const GameContextProvider: FC = ({ children }) => {
 	const [round, setRound] = useState<gameRounds>(gameRounds.FIRST);
 	const [points, setPoints] = useState<number>(0);
 	const [categories, setCategories] = useState(null!);
+	const [categoriesRequestState, fetchCategories] = useFetch(
+		`${process.env.REACT_APP_API_BASE_URL}/categories`
+	);
 	const [question, setQuestion] = useState(null!);
 	// we'll fetch some data later
 	/*
@@ -22,9 +25,6 @@ export const GameContextProvider: FC = ({ children }) => {
       6. show hall of fame if the player won
       7. show game over screen if the player lost
    */
-	const [categoriesRequestState, fetchCategories] = useFetch(
-		`${process.env.REACT_APP_API_BASE_URL}/categories`
-	);
 
 	useEffect(() => {
 		fetchCategories();
