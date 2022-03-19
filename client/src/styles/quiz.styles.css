@@ -2,7 +2,6 @@
 	width: 100%;
 	height: 90vh;
 	max-height: 350px;
-	position: relative;
 }
 
 /* styling the loader inside the quiz component */
