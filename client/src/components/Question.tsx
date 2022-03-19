@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { IBasicCategory, ICategory, IQuestion } from '../@types';
 import { randomElementFromArray } from '../helpers/randomElementFromArray';
 import { useFetch } from '../hooks/useFetch';
@@ -12,18 +12,28 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 	const [categoryRequestState, fetchCategory] = useFetch(
 		`${process.env.REACT_APP_API_BASE_URL}/categories/${category.id}`
 	);
+	const { data, loading, error } = categoryRequestState;
+	const [randomQuestion, setRandomQuestion] = useState<IQuestion>(null!);
+
 	useEffect(() => {
 		fetchCategory();
 	}, []);
 
 	useEffect(() => {
-		if (categoryRequestState.data) {
-			const randomQuestion = randomElementFromArray<IQuestion>(
-				(categoryRequestState.data as ICategory).questions
+		if (data) {
+			setRandomQuestion(
+				randomElementFromArray<IQuestion>((data as ICategory).questions)
 			);
-			console.log(randomQuestion);
 		}
-		console.log(categoryRequestState);
 	}, [categoryRequestState]);
-	return <h3>hello</h3>;
+
+	if (loading || !randomQuestion) return <h2>loading...</h2>;
+	return (
+		<>
+			<h3>{randomQuestion.content}</h3>
+			{randomQuestion.answers.map((answer) => (
+				<p>{answer.content}</p>
+			))}
+		</>
+	);
 };
