@@ -32,11 +32,15 @@ export interface IQuestion extends IBasicQuestion {
 	answers: IAnswer[];
 }
 
-export interface ICategory {
+export interface IBasicCategory {
 	id: number;
 	name: string;
 	difficultyLevel: number;
 	questions: IBasicQuestion[];
+}
+
+export interface ICategory extends IBasicCategory {
+	questions: IQuestion[];
 }
 
 export enum gameStates {

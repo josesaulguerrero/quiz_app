@@ -2,7 +2,7 @@ import React, { FC, useContext } from 'react';
 // local modules
 import { Welcome } from '../components/Welcome';
 import { Wrapper } from '../components/Wrapper';
-import { gameStates, ICategory, IGameContext } from '../@types';
+import { gameStates, IBasicCategory, ICategory, IGameContext } from '../@types';
 import { GameContext } from '../context/game.context';
 import { Question } from '../components/Question';
 
@@ -11,7 +11,7 @@ export const App: FC = () => {
 		useContext<IGameContext>(GameContext);
 	const currentCategory =
 		categories.data &&
-		(categories.data as ICategory[]).find(
+		(categories.data as IBasicCategory[]).find(
 			(category) => category.difficultyLevel === round
 		);
 	return (
@@ -19,7 +19,7 @@ export const App: FC = () => {
 			<Wrapper>
 				{gameState === gameStates.INITIAL && <Welcome />}
 				{gameState === gameStates.PLAYING && (
-					<Question category={currentCategory as ICategory} />
+					<Question category={currentCategory as IBasicCategory} />
 				)}
 			</Wrapper>
 		</div>
