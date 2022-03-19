@@ -6,7 +6,9 @@ import { randomElementFromArray } from '../helpers/randomElementFromArray';
 import { shuffleArray } from '../helpers/shuffleArray';
 import { useFetch } from '../hooks/useFetch';
 import { Header } from './Header';
+import { Loader } from './Loader';
 import { Question } from './Question';
+import '../styles/quiz.styles.css';
 
 export const QuizCard: FC = () => {
 	const { categories, round, points } = useContext<IGameContext>(GameContext);
@@ -43,14 +45,14 @@ export const QuizCard: FC = () => {
 	}, [categoryRequestState]);
 
 	return (
-		<article className="QuizCard">
+		<article className="quiz">
 			<Header
 				category={currentCategory as IBasicCategory}
 				points={points}
 				round={round}
 			/>
 			{categoryRequestState.loading || !randomQuestion ? (
-				<p>loading...</p>
+				<Loader />
 			) : (
 				<Question
 					randomQuestion={randomQuestion as IQuestion}

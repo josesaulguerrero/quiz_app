@@ -11,6 +11,6 @@
 	transform: translate(-50%, -50%);
 	background-color: var(--background-color);
 	border-radius: 5px;
-	box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
 	box-sizing: border-box;
 }
