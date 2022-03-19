@@ -7,8 +7,6 @@ import { useFetch } from '../hooks/useFetch';
 export const Welcome: FC = () => {
 	const { setUsername, setGameState } = useContext<IGameContext>(GameContext);
 	const [inputData, setInputData] = useState<string>('');
-	const [nicknameIsAvailable, setNicknameIsAvailable] =
-		useState<boolean>(false);
 	const [playerRequestState, fetchPlayer] = useFetch(
 		`${process.env.REACT_APP_API_BASE_URL}/players?name=${inputData}`
 	);
@@ -23,20 +21,12 @@ export const Welcome: FC = () => {
 	};
 
 	useEffect(() => {
-		if (data) {
-			(data as Array<unknown>).length === 0
-				? setNicknameIsAvailable(true)
-				: setNicknameIsAvailable(false);
-		}
-	}, [playerRequestState]);
-
-	useEffect(() => {
-		if (nicknameIsAvailable && !loading) {
+		//if the data is available and there are no users with the given username, then the player can continue
+		if (data && (data as Array<unknown>).length === 0) {
 			setUsername(inputData);
 			setGameState(gameStates.PLAYING);
 		}
-	}, [nicknameIsAvailable]);
-
+	}, [playerRequestState]);
 	return (
 		<section className="welcome">
 			<h1>Welcome to Funny Trivia!</h1>

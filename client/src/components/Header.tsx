@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { gameRounds, IBasicCategory } from '../@types';
 
 interface IHeaderProps {
@@ -12,12 +12,20 @@ export const Header: FC<IHeaderProps> = ({
 	round,
 	category: { name },
 }) => {
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+	const onOpenQuitModal = () => {
+		setIsModalOpen(true);
+	};
+
 	return (
 		<header>
+			<button onClick={onOpenQuitModal}>Quit</button>
 			<span>
-				{round} - {name}
+				round {round} - {name}
 			</span>
-			<span>{points}</span>
+			<span>points - {points}</span>
+			{isModalOpen && <p>sth</p>}
 		</header>
 	);
 };
