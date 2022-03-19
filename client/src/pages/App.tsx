@@ -7,7 +7,7 @@ import { GameContext } from '../context/game.context';
 import { Question } from '../components/Question';
 
 export const App: FC = () => {
-	const { gameState, round, categories } =
+	const { gameState, round, categories, hasWon } =
 		useContext<IGameContext>(GameContext);
 	const currentCategory =
 		categories.data &&
@@ -20,6 +20,12 @@ export const App: FC = () => {
 				{gameState === gameStates.INITIAL && <Welcome />}
 				{gameState === gameStates.PLAYING && (
 					<Question category={currentCategory as IBasicCategory} />
+				)}
+				{gameState === gameStates.GAME_OVER && hasWon === true && (
+					<p>You won!</p>
+				)}
+				{gameState === gameStates.GAME_OVER && hasWon === false && (
+					<p>Loserrrr</p>
 				)}
 			</Wrapper>
 		</div>

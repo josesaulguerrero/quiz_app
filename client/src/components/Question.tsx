@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 // local modules
 import {
 	gameStates,
@@ -14,21 +14,22 @@ import { randomElementFromArray } from '../helpers/randomElementFromArray';
 import { shuffleArray } from '../helpers/shuffleArray';
 import { useFetch } from '../hooks/useFetch';
 import { Answer } from './Answer';
+import { NextButton } from './NextButton';
 
 interface IQuestionProps {
 	category: IBasicCategory;
 }
 
 export const Question: FC<IQuestionProps> = ({ category }) => {
-	const { setRound, round, setHasWon, setPoints, setGameState } =
+	const { round, setPoints, setGameState } =
 		useContext<IGameContext>(GameContext);
 	const [categoryRequestState, fetchCategory] = useFetch(
 		`${process.env.REACT_APP_API_BASE_URL}/categories/${category.id}`
 	);
 	const { data, loading } = categoryRequestState;
-	const [randomQuestion, setRandomQuestion] = useState<IQuestion>();
+	const [randomQuestion, setRandomQuestion] = useState<IQuestion | null>(null);
 	const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
-	const [isCorrect, setIsCorrect] = useState<boolean>();
+	const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
 	const renderAnswers = (answers: IAnswer[]) => {
 		return answers.map(({ content, id, isCorrect }) => (
@@ -49,28 +50,24 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (checkAnswer(selectedAnswer as IAnswer)) {
+			// if the chosen answer is correct, then the player points will increase.
 			setIsCorrect(true);
 			setPoints((prevState) => (prevState += 100));
 			return;
 		}
-		setHasWon(false);
+		// if the player fails the questions, then he'll immediately lose.
 		setGameState(gameStates.GAME_OVER);
 		setIsCorrect(false);
 	};
 
-	const onClick = () => {
-		setRound((prevState) => (prevState += 1));
-		setIsCorrect(undefined);
-		setSelectedAnswer(null);
-	};
-
 	useEffect(() => {
+		// we'll refetch the info every time the round changes
 		fetchCategory();
 	}, [round]);
 
 	useEffect(() => {
 		if (data) {
-			// we will pick up a random question from the given category
+			// when the data is ready, we will pick up a random question from the given category
 			const randomQuestionFromCategory = randomElementFromArray<IQuestion>(
 				(data as ICategory).questions
 			);
@@ -91,13 +88,16 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 			<button
 				type="submit"
 				className="questionCheck"
-				disabled={!selectedAnswer || isCorrect !== undefined}
+				disabled={!selectedAnswer || isCorrect !== null}
 			>
 				Check
 			</button>
-			<button onClick={onClick} type="button" disabled={!isCorrect}>
-				next
-			</button>
+			<NextButton
+				isCorrect={isCorrect as boolean}
+				setIsCorrect={setIsCorrect}
+				setQuestion={setRandomQuestion}
+				setSelectedAnswer={setSelectedAnswer}
+			/>
 		</form>
 	);
 };
