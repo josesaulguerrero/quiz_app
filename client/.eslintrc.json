@@ -3,12 +3,13 @@
 		"browser": true,
 		"es2021": true
 	},
-	"root": true,
 	"extends": [
 		"plugin:react/recommended",
-		"airbnb",
+		"plugin:react-hooks/recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"react-app",
+		"react-app/jest"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -16,7 +17,8 @@
 			"jsx": true
 		},
 		"ecmaVersion": "latest",
-		"sourceType": "module"
+		"sourceType": "module",
+		"project": "./tsconfig.json"
 	},
 	"plugins": [
 		"react",
@@ -25,29 +27,12 @@
 		"@typescript-eslint/eslint-plugin"
 	],
 	"rules": {
-		"no-use-before-define": "off",
-		"@typescript-eslint/no-use-before-define": ["error"],
-		"react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
-		"import/extensions": [
-			"error",
-			"ignorePackages",
-			{
-				"ts": "never",
-				"tsx": "never"
-			}
-		],
-		"no-shadow": "off",
-		"@typescript-eslint/no-shadow": "off",
-		"max-len": ["warn", { "code": 80 }],
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "warn",
-		"react/function-component-definition": "off",
-		"import/prefer-default-export": "off",
-		"react/jsx-no-constructed-context-values": "off"
+		"no-console": "error",
+		"import/first": "error",
+		"react/prop-types": "off"
 	},
 	"settings": {
-		"import/resolver": {
-			"typescript": {}
-		}
+		"pragma": "React",
+		"version": "detect"
 	}
 }
