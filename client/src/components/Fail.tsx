@@ -17,7 +17,7 @@ export const Fail: FC = () => {
 		<section className="FailScreen">
 			<h2>You lost :(</h2>
 			<p>
-				You reach the round {round} and got {points} points
+				You reached the round {round} and got {points} points
 			</p>
 			<button onClick={onTryAgain}>Let me try again!</button>
 		</section>
