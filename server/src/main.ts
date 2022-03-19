@@ -14,8 +14,7 @@ async function bootstrap() {
 	app.enableCors({
 		origin: (origin, callback) => callback(null, true),
 		methods: 'GET,HEAD,PATCH,POST,DELETE',
-		allowedHeaders:
-			'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Observe',
+		allowedHeaders: '*',
 	});
 	await app.listen(parseInt(process.env.PORT), () => {
 		console.log(`app running at port ${process.env.PORT}`);
