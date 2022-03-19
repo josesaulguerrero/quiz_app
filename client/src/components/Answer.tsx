@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { IAnswer } from '../@types';
 
 interface IAnswerProps extends IAnswer {
-	setSelected: React.Dispatch<React.SetStateAction<IAnswer | undefined>>;
+	setSelected: React.Dispatch<React.SetStateAction<IAnswer | null>>;
 }
 
 export const Answer: FC<IAnswerProps> = ({ setSelected, ...answer }) => {

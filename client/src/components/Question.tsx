@@ -1,6 +1,14 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 // local modules
-import { IAnswer, IBasicCategory, ICategory, IQuestion } from '../@types';
+import {
+	gameStates,
+	IAnswer,
+	IBasicCategory,
+	ICategory,
+	IGameContext,
+	IQuestion,
+} from '../@types';
+import { GameContext } from '../context/game.context';
 import { randomElementFromArray } from '../helpers/randomElementFromArray';
 import { useFetch } from '../hooks/useFetch';
 import { Answer } from './Answer';
@@ -10,12 +18,15 @@ interface IQuestionProps {
 }
 
 export const Question: FC<IQuestionProps> = ({ category }) => {
+	const { setRound, round, setHasWon, setPoints, setGameState } =
+		useContext<IGameContext>(GameContext);
 	const [categoryRequestState, fetchCategory] = useFetch(
 		`${process.env.REACT_APP_API_BASE_URL}/categories/${category.id}`
 	);
 	const { data, loading } = categoryRequestState;
 	const [randomQuestion, setRandomQuestion] = useState<IQuestion>();
-	const [selectedAnswer, setSelectedAnswer] = useState<IAnswer>();
+	const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
+	const [isCorrect, setIsCorrect] = useState<boolean>();
 
 	const renderAnswers = (answers: IAnswer[]) =>
 		answers.map(({ content, id, isCorrect }) => (
@@ -35,13 +46,24 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (checkAnswer(selectedAnswer as IAnswer)) {
-			return console.log('yesssss, correct!!!');
+			setIsCorrect(true);
+			setPoints((prevState) => (prevState += 100));
+			return;
 		}
+		setHasWon(false);
+		setGameState(gameStates.GAME_OVER);
+		setIsCorrect(false);
+	};
+
+	const onClick = () => {
+		setRound((prevState) => (prevState += 1));
+		setIsCorrect(false);
+		setSelectedAnswer(null);
 	};
 
 	useEffect(() => {
 		fetchCategory();
-	}, []);
+	}, [round]);
 
 	useEffect(() => {
 		if (data) {
@@ -60,9 +82,12 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 			<button
 				type="submit"
 				className="questionCheck"
-				disabled={!selectedAnswer}
+				disabled={!selectedAnswer || isCorrect !== undefined}
 			>
 				Check
+			</button>
+			<button onClick={onClick} type="button" disabled={!isCorrect}>
+				next
 			</button>
 		</form>
 	);
