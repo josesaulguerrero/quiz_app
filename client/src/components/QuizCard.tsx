@@ -5,10 +5,11 @@ import { GameContext } from '../context/game.context';
 import { randomElementFromArray } from '../helpers/randomElementFromArray';
 import { shuffleArray } from '../helpers/shuffleArray';
 import { useFetch } from '../hooks/useFetch';
+import { Header } from './Header';
 import { Question } from './Question';
 
 export const QuizCard: FC = () => {
-	const { categories, round } = useContext<IGameContext>(GameContext);
+	const { categories, round, points } = useContext<IGameContext>(GameContext);
 	const [randomQuestion, setRandomQuestion] = useState<IQuestion | null>(null);
 	const currentCategory =
 		categories.data &&
@@ -41,11 +42,21 @@ export const QuizCard: FC = () => {
 		}
 	}, [categoryRequestState]);
 
-	if (categoryRequestState.loading || !randomQuestion) return <p>loading...</p>;
 	return (
-		<Question
-			randomQuestion={randomQuestion as IQuestion}
-			setRandomQuestion={setRandomQuestion}
-		/>
+		<article className="QuizCard">
+			<Header
+				category={currentCategory as IBasicCategory}
+				points={points}
+				round={round}
+			/>
+			{categoryRequestState.loading || !randomQuestion ? (
+				<p>loading...</p>
+			) : (
+				<Question
+					randomQuestion={randomQuestion as IQuestion}
+					setRandomQuestion={setRandomQuestion}
+				/>
+			)}
+		</article>
 	);
 };
