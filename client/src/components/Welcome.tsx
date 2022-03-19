@@ -29,7 +29,12 @@ export const Welcome: FC = () => {
 					onChange={onChange}
 				/>
 			</label>
-			<button type="button" disabled={!inputData.trim()} onClick={onClick}>
+			<button
+				className="welcomeButton"
+				type="button"
+				disabled={!inputData.trim()}
+				onClick={onClick}
+			>
 				Let&apos;s get started!
 			</button>
 		</>
