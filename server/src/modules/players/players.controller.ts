@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { CreatePlayerDTO } from './player.dto';
 import { PlayersService } from './players.service';
 
@@ -7,8 +7,8 @@ export class PlayersController {
 	constructor(private readonly playersService: PlayersService) {}
 
 	@Get()
-	findAll() {
-		return this.playersService.findAll();
+	findAll(@Query('name') name: string) {
+		return this.playersService.findAll(name);
 	}
 
 	@Post()

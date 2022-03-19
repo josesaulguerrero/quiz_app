@@ -11,8 +11,11 @@ export class PlayersService {
 		private readonly playerRepository: Repository<Player>,
 	) {}
 
-	findAll() {
-		return this.playerRepository.find();
+	findAll(name) {
+		const where = name ? { name } : {};
+		return this.playerRepository.find({
+			where,
+		});
 	}
 
 	create(playerData: CreatePlayerDTO) {

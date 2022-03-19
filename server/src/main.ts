@@ -13,10 +13,10 @@ async function bootstrap() {
 	);
 	app.enableCors({
 		origin: (origin, callback) => callback(null, true),
-		methods: 'GET,HEAD,PATCH,POST,DELETE',
+		methods: '*',
 		allowedHeaders: '*',
 	});
-	await app.listen(parseInt(process.env.PORT), () => {
+	await app.listen(parseInt(process.env.PORT) || 3000, () => {
 		console.log(`app running at port ${process.env.PORT}`);
 	});
 }
