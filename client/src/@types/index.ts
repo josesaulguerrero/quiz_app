@@ -17,7 +17,7 @@ export interface IGameContext {
 	categories: requestState;
 }
 
-interface IAnswer {
+export interface IAnswer {
 	id: number;
 	content: string;
 	isCorrect: boolean;

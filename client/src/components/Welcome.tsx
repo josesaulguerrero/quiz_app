@@ -17,7 +17,7 @@ export const Welcome: FC = () => {
 	};
 
 	return (
-		<>
+		<section className="welcome">
 			<h1>Welcome to Funny Trivia!</h1>
 			<label htmlFor="nickname">
 				Your nickname
@@ -37,6 +37,6 @@ export const Welcome: FC = () => {
 			>
 				Let&apos;s get started!
 			</button>
-		</>
+		</section>
 	);
 };
