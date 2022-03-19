@@ -58,13 +58,20 @@
 }
 
 .welcomeButton {
-	width: 60%;
+	width: 80%;
 	max-width: 200px;
+	min-height: 40px;
+	position: relative;
 	font-weight: 500;
 	font-size: 2rem;
-	color: var(--white-font-color);
+	color: var(--white-color);
 	padding: 10px;
 	border: none;
 	border-radius: 5px;
 	background-color: var(--main-color);
+}
+
+/* styles for the loader balls */
+.welcomeButton .ball {
+	background-color: var(--white-color);
 }

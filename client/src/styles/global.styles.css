@@ -13,8 +13,8 @@ html {
 }
 
 :root {
-	--background-color: rgb(238, 247, 255);
-	--white-font-color: rgb(240, 249, 255);
+	--background-color: rgb(66, 162, 247);
+	--white-color: rgb(240, 249, 255);
 	--main-color: #8b80b6;
 	--error-color: rgb(255, 113, 113);
 }

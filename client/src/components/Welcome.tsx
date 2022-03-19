@@ -5,6 +5,7 @@ import { GameContext } from '../context/game.context';
 import { useFetch } from '../hooks/useFetch';
 import triviaImage from '../assets/science.png';
 import '../styles/welcome.styles.css';
+import { Loader } from './Loader';
 
 export const Welcome: FC = () => {
 	const { setUsername, setGameState } = useContext<IGameContext>(GameContext);
@@ -60,7 +61,7 @@ export const Welcome: FC = () => {
 					type="submit"
 					disabled={!inputData.trim() || loading}
 				>
-					Let&apos;s get started!
+					{loading ? <Loader /> : "Let's get started!"}
 				</button>
 			</form>
 		</section>

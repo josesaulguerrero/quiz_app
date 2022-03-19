@@ -1,0 +1,46 @@
+.loader {
+	width: 100%;
+	min-width: 100px;
+	height: 100%;
+	min-height: 40px;
+	position: absolute;
+	inset: 50% 0 0 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	transform: translate(-50%, -50%);
+}
+
+.ball {
+	--ball-size: 12px;
+	width: var(--ball-size);
+	height: var(--ball-size);
+	border-radius: 50%;
+	background-color: blue;
+	animation: loading 0.7s infinite ease-in-out;
+}
+
+.ball:not(:last-of-type) {
+	margin-right: 5px;
+}
+
+.ball:nth-child(2) {
+	animation-delay: 0.05s;
+}
+
+.ball:nth-child(3) {
+	animation-delay: 0.1s;
+}
+
+@keyframes loading {
+	0% {
+		transform: translateY(5px);
+	}
+	50% {
+		transform: translateY(-5px);
+	}
+	100% {
+		transform: translateY(5px);
+	}
+}
