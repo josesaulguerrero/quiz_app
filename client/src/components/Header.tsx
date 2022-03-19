@@ -31,7 +31,7 @@ export const Header: FC<IHeaderProps> = ({
 				round {round} - {name}
 			</span>
 			<span className="headerPoints">points - {points}</span>
-			{isModalOpen && <QuitModal />}
+			<QuitModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
 		</header>
 	);
 };
