@@ -25,7 +25,7 @@ export const Header: FC<IHeaderProps> = ({
 	return (
 		<header className="header">
 			<button onClick={onOpenQuitModal} className="quit">
-				<img src={quitImage} alt="quit" width="40" />
+				<img src={quitImage} alt="quit" width="35" />
 			</button>
 			<span className="headerRound">
 				round {round} - {name}

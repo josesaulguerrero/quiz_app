@@ -7,7 +7,7 @@
 }
 
 .quit {
-	--button-size: 40px;
+	--button-size: 35px;
 
 	width: var(--button-size);
 	height: var(--button-size);
