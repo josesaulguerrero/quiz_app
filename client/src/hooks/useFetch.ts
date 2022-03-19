@@ -1,15 +1,34 @@
+import { useState } from 'react';
+// local modules
+import { requestState } from '../@types';
+
 export const useFetch = (
 	endpoint: string,
-	callback: (error: unknown, data: Promise<Response> | null) => unknown,
 	config?: RequestInit
-) => {
-	return async () => {
+): [requestState, () => unknown] => {
+	const [requestState, setRequestState] = useState<requestState>({
+		data: null,
+		error: null,
+		loading: true,
+	});
+
+	const fetcher = async () => {
 		try {
 			const data = await fetch(endpoint, config);
 			const JSONData = await data.json();
-			callback(null, JSONData);
+			setRequestState((prevState) => ({
+				...prevState,
+				loading: false,
+				data: JSONData,
+			}));
 		} catch (error) {
-			callback(error, null);
+			setRequestState((prevState) => ({
+				...prevState,
+				error: true,
+				loading: false,
+			}));
 		}
 	};
+
+	return [requestState, fetcher];
 };

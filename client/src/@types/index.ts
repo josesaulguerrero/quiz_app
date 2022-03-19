@@ -13,3 +13,9 @@ export enum gameRounds {
 	FOURTH = 4,
 	FIFTH = 5,
 }
+
+export type requestState = {
+	loading: boolean;
+	data: Promise<Response> | Promise<Response>[] | unknown;
+	error: unknown;
+};
