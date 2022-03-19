@@ -5,6 +5,7 @@ import { gameStates, IAnswer, IGameContext, IQuestion } from '../@types';
 import { GameContext } from '../context/game.context';
 import { Answer } from './Answer';
 import { NextButton } from './NextButton';
+import '../styles/question.styles.css';
 
 interface IQuestionProps {
 	randomQuestion: IQuestion;
@@ -27,6 +28,7 @@ export const Question: FC<IQuestionProps> = ({
 				isCorrect={isCorrect}
 				key={id}
 				setSelected={setSelectedAnswer}
+				selectedAnswer={selectedAnswer}
 			/>
 		));
 	};
@@ -46,11 +48,11 @@ export const Question: FC<IQuestionProps> = ({
 
 	return (
 		<form onSubmit={onSubmit} className="question">
-			<h3>{randomQuestion.content}</h3>
+			<h3 className="questionContent">{randomQuestion.content}</h3>
 			{renderAnswers(randomQuestion.answers)}
 			<button
 				type="submit"
-				className="questionCheck"
+				className="questionCheckButton"
 				disabled={!selectedAnswer || isCorrect !== null}
 			>
 				Check

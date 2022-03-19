@@ -1,0 +1,55 @@
+.answer {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 10px 5px;
+	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+}
+
+.answer.selected {
+	color: var(--white-color);
+	font-weight: bold;
+	background-color: var(--main-color);
+}
+
+.answer.selected .answerInput {
+	--main-color: var(--white-color);
+}
+
+.answerInput {
+	position: relative;
+	margin: 0 10px 0 0;
+	visibility: hidden;
+}
+
+.answerInput::before {
+	--size: 15px;
+	position: absolute;
+	content: '';
+	inset: 50% 0 0 50%;
+	transform: translate(-50%, -50%);
+	width: var(--size);
+	height: var(--size);
+	border: 1px solid var(--main-color);
+	border-radius: 50%;
+	visibility: visible;
+}
+
+.answerInput:checked:after {
+	--size: 10px;
+	position: absolute;
+	content: '';
+	inset: 50% 0 0 50%;
+	transform: translate(-50%, -50%);
+	width: var(--size);
+	height: var(--size);
+	background-color: var(--main-color);
+	border-radius: 50%;
+	visibility: visible;
+}
+
+.answer:not(:last-of-type) {
+	margin-bottom: 10px;
+}
