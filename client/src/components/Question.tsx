@@ -1,4 +1,5 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { FC, useCallback, useContext, useEffect, useState } from 'react';
 // local modules
 import {
 	gameStates,
@@ -10,6 +11,7 @@ import {
 } from '../@types';
 import { GameContext } from '../context/game.context';
 import { randomElementFromArray } from '../helpers/randomElementFromArray';
+import { shuffleArray } from '../helpers/shuffleArray';
 import { useFetch } from '../hooks/useFetch';
 import { Answer } from './Answer';
 
@@ -28,8 +30,8 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 	const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
 	const [isCorrect, setIsCorrect] = useState<boolean>();
 
-	const renderAnswers = (answers: IAnswer[]) =>
-		answers.map(({ content, id, isCorrect }) => (
+	const renderAnswers = (answers: IAnswer[]) => {
+		return answers.map(({ content, id, isCorrect }) => (
 			<Answer
 				content={content}
 				id={id}
@@ -38,6 +40,7 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 				setSelected={setSelectedAnswer}
 			/>
 		));
+	};
 
 	const checkAnswer = (answer: IAnswer) => {
 		return answer.isCorrect;
@@ -57,7 +60,7 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 
 	const onClick = () => {
 		setRound((prevState) => (prevState += 1));
-		setIsCorrect(false);
+		setIsCorrect(undefined);
 		setSelectedAnswer(null);
 	};
 
@@ -68,9 +71,15 @@ export const Question: FC<IQuestionProps> = ({ category }) => {
 	useEffect(() => {
 		if (data) {
 			// we will pick up a random question from the given category
-			setRandomQuestion(
-				randomElementFromArray<IQuestion>((data as ICategory).questions)
+			const randomQuestionFromCategory = randomElementFromArray<IQuestion>(
+				(data as ICategory).questions
 			);
+			// we need to shuffle the answers to avoid the players from cheating!
+			const shuffledAnswers = shuffleArray(randomQuestionFromCategory.answers);
+			setRandomQuestion(() => ({
+				...randomQuestionFromCategory,
+				answers: shuffledAnswers,
+			}));
 		}
 	}, [categoryRequestState]);
 
