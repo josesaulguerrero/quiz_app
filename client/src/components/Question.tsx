@@ -19,6 +19,7 @@ export const Question: FC<IQuestionProps> = ({
 	const { setPoints, setGameState } = useContext<IGameContext>(GameContext);
 	const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
 	const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+	const [questionWasChecked, setQuestionWasChecked] = useState<boolean>(false);
 
 	const renderAnswers = (answers: IAnswer[]) => {
 		return answers.map(({ content, id, isCorrect }) => (
@@ -29,12 +30,14 @@ export const Question: FC<IQuestionProps> = ({
 				key={id}
 				setSelected={setSelectedAnswer}
 				selectedAnswer={selectedAnswer}
+				questionWasChecked={questionWasChecked}
 			/>
 		));
 	};
 
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		setQuestionWasChecked(true);
 		if ((selectedAnswer as IAnswer).isCorrect) {
 			// if the chosen answer is correct, then the player points will increase.
 			setIsCorrect(true);

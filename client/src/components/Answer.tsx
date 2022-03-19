@@ -6,15 +6,20 @@ import '../styles/answer.styles.css';
 interface IAnswerProps extends IAnswer {
 	setSelected: React.Dispatch<React.SetStateAction<IAnswer | null>>;
 	selectedAnswer: IAnswer | null;
+	questionWasChecked: boolean;
 }
 
 export const Answer: FC<IAnswerProps> = ({
 	setSelected,
 	selectedAnswer,
+	questionWasChecked,
 	...answer
 }) => {
 	const onClick = (answer: IAnswer) => {
-		setSelected(answer);
+		if (!questionWasChecked) {
+			// if the question hasn't been check yet, then we can set this answer as "selected"
+			setSelected(answer);
+		}
 	};
 
 	return (
@@ -28,6 +33,7 @@ export const Answer: FC<IAnswerProps> = ({
 				type="radio"
 				name="answer"
 				id={`answer-${answer.id}`}
+				disabled={questionWasChecked}
 			/>
 			<p className="answerContent">{answer.content}</p>
 		</label>
