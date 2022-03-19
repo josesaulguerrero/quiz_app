@@ -7,21 +7,19 @@ import { useFetch } from '../hooks/useFetch';
 export const Welcome: FC = () => {
 	const { setUsername, setGameState } = useContext<IGameContext>(GameContext);
 	const [inputData, setInputData] = useState<string>('');
-	const [nicknameIsAvailable, setNicknameIsAvailable] = useState<boolean>(true);
+	const [nicknameIsAvailable, setNicknameIsAvailable] =
+		useState<boolean>(false);
 	const [playerRequestState, fetchPlayer] = useFetch(
 		`${process.env.REACT_APP_API_BASE_URL}/players?name=${inputData}`
 	);
-	const { data } = playerRequestState;
+	const { data, loading } = playerRequestState;
 
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setNicknameIsAvailable(true);
 		setInputData(event.target.value);
 	};
 
 	const onClick = () => {
 		fetchPlayer();
-		setUsername(inputData);
-		setGameState(gameStates.PLAYING);
 	};
 
 	useEffect(() => {
@@ -31,6 +29,13 @@ export const Welcome: FC = () => {
 				: setNicknameIsAvailable(false);
 		}
 	}, [playerRequestState]);
+
+	useEffect(() => {
+		if (nicknameIsAvailable && !loading) {
+			setUsername(inputData);
+			setGameState(gameStates.PLAYING);
+		}
+	}, [nicknameIsAvailable]);
 
 	return (
 		<section className="welcome">
@@ -51,7 +56,7 @@ export const Welcome: FC = () => {
 			<button
 				className="welcomeButton"
 				type="button"
-				disabled={!inputData.trim() || !nicknameIsAvailable}
+				disabled={!inputData.trim() || loading}
 				onClick={onClick}
 			>
 				Let&apos;s get started!

@@ -9,10 +9,14 @@ export const useFetch = (
 	const [requestState, setRequestState] = useState<requestState>({
 		data: null,
 		error: null,
-		loading: true,
+		loading: false,
 	});
 
 	const fetcher = async () => {
+		setRequestState((prevState) => ({
+			...prevState,
+			loading: true,
+		}));
 		try {
 			const data = await fetch(endpoint, config);
 			const JSONData = await data.json();
