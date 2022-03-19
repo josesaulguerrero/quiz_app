@@ -1,4 +1,43 @@
-// interface IGameContext {}
+export interface IGameContext {
+	setGameState: React.Dispatch<React.SetStateAction<gameStates>>;
+	gameState: gameStates;
+
+	setUsername: React.Dispatch<React.SetStateAction<string>>;
+	username: string;
+
+	setHasWon: React.Dispatch<React.SetStateAction<boolean>>;
+	hasWon: boolean;
+
+	setRound: React.Dispatch<React.SetStateAction<gameRounds>>;
+	round: gameRounds;
+
+	setPoints: React.Dispatch<React.SetStateAction<number>>;
+	points: number;
+
+	categories: requestState;
+}
+
+interface IAnswer {
+	id: number;
+	content: string;
+	isCorrect: boolean;
+}
+
+interface IBasicQuestion {
+	id: number;
+	content: string;
+}
+
+export interface IQuestion extends IBasicQuestion {
+	answers: IAnswer[];
+}
+
+export interface ICategory {
+	id: number;
+	name: string;
+	difficultyLevel: number;
+	questions: IBasicQuestion[];
+}
 
 export enum gameStates {
 	INITIAL = 'INITIAL',
