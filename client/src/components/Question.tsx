@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { FC, useContext, useState } from 'react';
 // local modules
-import { gameStates, IAnswer, IGameContext, IQuestion } from '../@types';
+import { IAnswer, IGameContext, IQuestion } from '../@types';
 import { GameContext } from '../context/game.context';
 import { Answer } from './Answer';
 import { NextButton } from './NextButton';
@@ -16,7 +16,7 @@ export const Question: FC<IQuestionProps> = ({
 	randomQuestion,
 	setRandomQuestion,
 }) => {
-	const { setPoints, setGameState } = useContext<IGameContext>(GameContext);
+	const { setPoints } = useContext<IGameContext>(GameContext);
 	const [selectedAnswer, setSelectedAnswer] = useState<IAnswer | null>(null);
 	const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 	const [questionWasChecked, setQuestionWasChecked] = useState<boolean>(false);
@@ -28,7 +28,7 @@ export const Question: FC<IQuestionProps> = ({
 				id={id}
 				isCorrect={isCorrect}
 				key={id}
-				setSelected={setSelectedAnswer}
+				setSelectedAnswer={setSelectedAnswer}
 				selectedAnswer={selectedAnswer}
 				questionWasChecked={questionWasChecked}
 			/>
@@ -45,7 +45,6 @@ export const Question: FC<IQuestionProps> = ({
 			return;
 		}
 		// if the player fails the questions, then he'll immediately lose.
-		setGameState(gameStates.GAME_OVER);
 		setIsCorrect(false);
 	};
 

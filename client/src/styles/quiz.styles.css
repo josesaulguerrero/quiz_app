@@ -1,5 +1,6 @@
 .quiz {
 	width: 100%;
+	min-height: 300px;
 }
 
 /* styling the loader inside the quiz component */

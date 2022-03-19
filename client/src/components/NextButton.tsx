@@ -25,22 +25,34 @@ export const NextButton: FC<INextButtonProps> = ({
 	const { setGameState, round, setHasWon, setRound } =
 		useContext<IGameContext>(GameContext);
 
-	const onNext = () => {
-		if (round === gameRounds.FIFTH) {
-			// if the player has gotten to the last round and answered correctly, then the game will be over and they'll win.
-			setGameState(gameStates.GAME_OVER);
-			setHasWon(true);
-			return;
-		}
-		// if the game isn't over yet, then we'll go to the next round, and reset the different states.
+	const onFinalRound = () => {
+		// if the player has gotten to the last round and answered correctly, then the game will be over and they'll win.
+		setGameState(gameStates.GAME_OVER);
+		setHasWon(true);
+	};
+
+	const onCorrectAnswer = () => {
 		setRound((prevState) => (prevState += 1));
 		setQuestion(null);
 		setIsCorrect(null);
 		setSelectedAnswer(null);
 	};
 
+	const onWrongAnswer = () => {
+		setGameState(gameStates.GAME_OVER);
+	};
+
+	const onNext = () => {
+		round === gameRounds.FIFTH && onFinalRound();
+		// if the game isn't over yet, then we'll go to the next round, and reset the different states.
+		if (!isCorrect) {
+			return onWrongAnswer();
+		}
+		onCorrectAnswer();
+	};
+
 	return (
-		<button onClick={onNext} type="button" disabled={!isCorrect}>
+		<button onClick={onNext} type="button" disabled={isCorrect === null}>
 			next
 		</button>
 	);

@@ -4,13 +4,13 @@ import { IAnswer } from '../@types';
 import '../styles/answer.styles.css';
 
 interface IAnswerProps extends IAnswer {
-	setSelected: React.Dispatch<React.SetStateAction<IAnswer | null>>;
+	setSelectedAnswer: React.Dispatch<React.SetStateAction<IAnswer | null>>;
 	selectedAnswer: IAnswer | null;
 	questionWasChecked: boolean;
 }
 
 export const Answer: FC<IAnswerProps> = ({
-	setSelected,
+	setSelectedAnswer,
 	selectedAnswer,
 	questionWasChecked,
 	...answer
@@ -18,13 +18,19 @@ export const Answer: FC<IAnswerProps> = ({
 	const onClick = (answer: IAnswer) => {
 		if (!questionWasChecked) {
 			// if the question hasn't been check yet, then we can set this answer as "selected"
-			setSelected(answer);
+			setSelectedAnswer(answer);
 		}
+	};
+
+	const getClass = () => {
+		return answer.isCorrect ? 'correct' : 'wrong';
 	};
 
 	return (
 		<label
-			className={`answer ${selectedAnswer?.id === answer.id && 'selected'}`}
+			className={`answer ${selectedAnswer?.id === answer.id && 'selected'} ${
+				questionWasChecked && getClass()
+			}`}
 			onClick={() => onClick(answer)}
 			htmlFor={`answer-${answer.id}`}
 		>

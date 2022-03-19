@@ -9,6 +9,23 @@
 	cursor: pointer;
 }
 
+/* these styles will be applied when the user presses the check button - start */
+.answer.correct,
+.answer.wrong {
+	cursor: not-allowed;
+}
+
+.answer.correct.selected,
+.answer.correct {
+	background-color: green;
+}
+
+.answer.wrong.selected {
+	background-color: red;
+}
+/* end --------------------------------------------------------------------- */
+
+/* These styles will be applied when one answer is picked up - start */
 .answer.selected {
 	color: var(--white-color);
 	font-weight: bold;
@@ -18,6 +35,7 @@
 .answer.selected .answerInput {
 	--main-color: var(--white-color);
 }
+/* end --------------------------------------------------------------------- */
 
 .answerInput {
 	position: relative;
