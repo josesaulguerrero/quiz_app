@@ -183,7 +183,7 @@ And there you go, the app should be app and running in the specified port (:3000
 
     This will set up the environment variables, so that the backend will work when you try to run the application. If you try to run the application without having set this variable, you will get lots of errors, be careful.
 
-    **If you don't have an API, then feel free to use mine: https://desolate-everglades-91505.herokuapp.com/**
+    **If you don't have an API, then feel free to use mine: https://desolate-everglades-91505.herokuapp.com/api/v1/**
 
 4.  Finally, run the following command to start the application in watch-mode:
     ```shell
