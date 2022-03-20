@@ -10,10 +10,12 @@
     - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
+      - [Backend - API](#backend---api)
+      - [Frontend](#frontend)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
-  - [How to run the project](#how-to-run-the-project)
+  - [How to run locally](#how-to-run-locally)
   - [Author](#author)
 
 ## Overview
@@ -51,13 +53,26 @@ Users should be able to:
 
 ### Built with
 
+#### Backend - API
+
+-   [NestJS](https://docs.nestjs.com/) - This is a NodeJS progressive framework that gives you lots of tools to build modular and object-oriented applications.
+-   [PostgreSQL](https://www.postgresql.org/) - An open-source relational database, very popular because of its great community support.
+-   [Docker](https://www.docker.com/) - Docker is a container manager that allows you to develop, build and ship your applications much more easily.
+-   [TypeORM](https://typeorm.io/) - TypeORM is one of the most popular Object-Relational Mappers when talking about TypeScript.
+-   [TypeScript](https://www.typescriptlang.org/) - TypeScript is a super set of JavaScript which comes with many features that help devs avoid production bugs.
+-   [Heroku](https://heroku.com/) - Heroku is a PAAS (Platform As A Service) that helps you deploy and continuously deliver your applications.
+
+#### Frontend
+
 -   Semantic HTML5 markup
 -   CSS custom properties
 -   Flexbox
 -   Mobile-first workflow
--   [create-react-app](https://create-react-app.dev/docs/) - To create a React setup ready to run.
--   [React](https://reactjs.org/) - JS library
--   [TypeScript](https://www.typescriptlang.org/docs/) - To type my components and avoid production bugs.
+-   [create-react-app](https://create-react-app.dev/docs/) - A very handy tool that helps devs setup a react app in just a few minutes.
+-   [React](https://reactjs.org/) - The most popular JS library when talking about building front-end applications.
+-   [Custom hooks](https://reactjs.org/docs/hooks-custom.html) - Custom hooks are a very useful feature of react, available since React 16.8, these hooks let you encapsulate and re-use logic very easily.
+-   [Context API](https://reactjs.org/docs/context.html#gatsby-focus-wrapper) - Yet another feature of React, the context API lets you pass data through the components tree avoiding one of the most common problems in React: Props drilling.
+-   [TypeScript](https://www.typescriptlang.org/docs/) - TypeScript is a super set of JavaScript which comes with many features that help devs avoid production bugs.
 
 ### What I learned
 
@@ -67,7 +82,7 @@ Building this project helped me learn to use and improve my knowledge of some Re
 
 ### Useful resources
 
-## How to run the project
+## How to run locally
 
 1. You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
 
