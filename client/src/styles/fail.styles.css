@@ -1,0 +1,33 @@
+.fail {
+	width: 100%;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.failTitle {
+	font-size: 3rem;
+}
+
+.failContent {
+	margin: 20px 0 25px;
+	text-align: center;
+}
+
+.failContent span {
+	font-weight: bold;
+}
+
+.tryAgainButton {
+	width: 100%;
+	max-width: 200px;
+	color: var(--white-color);
+	font-weight: bold;
+	font-size: 2rem;
+	padding: 10px;
+	border: none;
+	background-color: var(--main-color);
+	border-radius: 5px;
+}

@@ -1,6 +1,8 @@
 import React, { FC, useContext } from 'react';
+// local modules
 import { gameStates, IGameContext } from '../@types';
 import { GameContext } from '../context/game.context';
+import '../styles/fail.styles.css';
 
 export const Fail: FC = () => {
 	const { setGameState, setPoints, points, setRound, round } =
@@ -14,12 +16,15 @@ export const Fail: FC = () => {
 	};
 
 	return (
-		<section className="FailScreen">
-			<h2>You lost :(</h2>
-			<p>
-				You reached the round {round} and got {points} points
+		<section className="fail">
+			<h2 className="failTitle">You lost :(</h2>
+			<p className="failContent">
+				You reached the round <span>{round}</span> and got <span>{points}</span>{' '}
+				points, but don&apos;t worry, you can keep trying!
 			</p>
-			<button onClick={onTryAgain}>Let me try again!</button>
+			<button onClick={onTryAgain} className="tryAgainButton">
+				Let me try again!
+			</button>
 		</section>
 	);
 };
