@@ -1,0 +1,25 @@
+.victory {
+	width: 100%;
+	min-height: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.victoryTitle {
+	font-size: 3rem;
+}
+
+.victoryMessage {
+	margin: 10px 0 20px;
+}
+
+.hallOfFameTitle {
+	font-size: 2rem;
+}
+
+.hallOfFameMessage {
+	margin: 10px 0 0;
+	text-align: center;
+}

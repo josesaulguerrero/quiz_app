@@ -5,12 +5,20 @@ import { GameContext } from '../context/game.context';
 import '../styles/fail.styles.css';
 
 export const Fail: FC = () => {
-	const { setGameState, setPoints, points, setRound, round, gameOverCause } =
-		useContext<IGameContext>(GameContext);
+	const {
+		setGameState,
+		setPoints,
+		points,
+		setRound,
+		round,
+		gameOverCause,
+		setGameOverCause,
+	} = useContext<IGameContext>(GameContext);
 
 	const onTryAgain = () => {
 		// if the player fails, we will reset everything to its initial value
 		setGameState(gameStates.PLAYING);
+		setGameOverCause(null);
 		setPoints(0);
 		setRound(1);
 	};

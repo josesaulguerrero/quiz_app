@@ -7,12 +7,16 @@ import '../styles/victory.styles.css';
 export const Victory: FC = () => {
 	const { points, round } = useContext<IGameContext>(GameContext);
 	return (
-		<section className="FailScreen">
-			<h2>You won :D</h2>
-			<p>
+		<section className="victory">
+			<h2 className="victoryTitle">You won :D</h2>
+			<p className="victoryMessage">
 				You reached the round {round} and got {points} points
 			</p>
-			<h3>Hall Of Fame</h3>
+			<h3 className="hallOfFameTitle">🎖️Welcome to the Hall Of Fame🎖️</h3>
+			<p className="hallOfFameMessage">
+				You&apos;ve proved your knowledge, now take a rest to feel proud of
+				yourself...
+			</p>
 		</section>
 	);
 };
