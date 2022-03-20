@@ -46,6 +46,11 @@ export interface ICategory extends IBasicCategory {
 	questions: IQuestion[];
 }
 
+export interface IPlayer {
+	name: string;
+	id: number;
+}
+
 export enum gameStates {
 	INITIAL = 'INITIAL',
 	PLAYING = 'PLAYING',

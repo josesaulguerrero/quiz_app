@@ -1,6 +1,8 @@
 .victory {
 	width: 100%;
 	min-height: 200px;
+	height: fit-content;
+	max-height: 90vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -13,13 +15,4 @@
 
 .victoryMessage {
 	margin: 10px 0 20px;
-}
-
-.hallOfFameTitle {
-	font-size: 2rem;
-}
-
-.hallOfFameMessage {
-	margin: 10px 0 0;
-	text-align: center;
 }
