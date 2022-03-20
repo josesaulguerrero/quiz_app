@@ -34,7 +34,7 @@ export const NextButton: FC<INextButtonProps> = ({
 		setGameOverCause,
 	} = useContext<IGameContext>(GameContext);
 	const body = JSON.stringify({
-		name: username,
+		name: username.toString(),
 	});
 	const [, createPlayer] = useFetch(
 		`${process.env.REACT_APP_API_BASE_URL}/players`,

@@ -22,7 +22,7 @@ export const Welcome: FC = () => {
 
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		if (!inputData.trim()) return;
+		if (!inputData.trim() || inputData.length < 5) return;
 		fetchPlayer();
 	};
 
@@ -53,6 +53,9 @@ export const Welcome: FC = () => {
 						placeholder="e.g. Alex92"
 						onChange={onChange}
 					/>
+					{inputData.length < 5 && (
+						<span className="welcomeError">5 characters min.</span>
+					)}
 					{(data as Array<unknown>)?.length >= 1 && (
 						<span className="welcomeError">username is not available...</span>
 					)}
@@ -60,7 +63,7 @@ export const Welcome: FC = () => {
 				<button
 					className="welcomeButton"
 					type="submit"
-					disabled={!inputData.trim() || loading}
+					disabled={!inputData.trim() || loading || inputData.length < 5}
 				>
 					{loading ? <Loader /> : "Let's get started!"}
 				</button>
