@@ -15,7 +15,8 @@
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
-  - [How to run locally](#how-to-run-locally)
+  - [How to run the backend - API](#how-to-run-the-backend---api)
+  - [How to run the Frontend](#how-to-run-the-frontend)
   - [Author](#author)
 
 ## Overview
@@ -76,13 +77,28 @@ Users should be able to:
 
 ### What I learned
 
-Building this project helped me learn to use and improve my knowledge of some React, JS and TS tools, such as:
+Building this project helped me learn to use and improve my knowledge of some JS and TS tools, such as:
+
+-   First of all, building a full-stack application on my own and managing to connect all of the pieces.
+-   Using NestJS and TypeScript to create DTOs and entities that validate the data sent by the client.
+-   Using TypeORM and class-validator to model and design the different entities involved in the business logic.
+-   Randomly sort and array.
+-   Deploying a NestJS application to Heroku and connect it to a remote database.
+-   Developing a full-stack project in the same git repository.
+-   Using TypeScript features inside a React project to type my components and the data fetched from the API.
+-   Sharing a global state through the context API.
+-   Using the useEffect hook to handle my requests to the API.
+-   Creating styles that behave one way or another depending on the logic behind the application.
 
 ### Continued development
 
 ### Useful resources
 
-## How to run locally
+## How to run the backend - API
+
+1. You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
+
+## How to run the Frontend
 
 1. You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
 
