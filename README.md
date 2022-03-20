@@ -51,7 +51,7 @@ Users should be able to:
 
 -   [Repository URL](https://github.com/josesaulguerrero/quiz_app)
 -   [Frontend](https://funny-trivia.netlify.app/)
--   [API](https://desolate-everglades-91505.herokuapp.com/)
+-   [API](https://desolate-everglades-91505.herokuapp.com/api/v1/)
 
 ## My process
 
