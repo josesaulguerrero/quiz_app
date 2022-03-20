@@ -15,7 +15,11 @@
     - [What I learned](#what-i-learned)
     - [Useful resources](#useful-resources)
   - [How to run the backend - API](#how-to-run-the-backend---api)
+    - [pre-requisites](#pre-requisites)
+    - [steps](#steps)
   - [How to run the Frontend](#how-to-run-the-frontend)
+    - [pre-requisites](#pre-requisites-1)
+    - [steps](#steps-1)
   - [Author](#author)
 
 ## Overview
@@ -97,13 +101,22 @@ Building this project helped me learn to use and improve my knowledge of some JS
 
 ## How to run the backend - API
 
-1.  You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
-    -   After your installation has finished, then please run:
-        ```shell
-        npm install
-        ```
-        With this command you will install the dependencies and packages that the application requires to run.
-2.  You also need to have installed [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) to run the postgres database.
+### pre-requisites
+
+-   You need to have NodeJS and NPM installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
+-   You also need to have installed [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) to run the postgres database.
+
+### steps
+
+1.  First of all, clone this repository:
+    ```shell
+    git clone https://github.com/josesaulguerrero/quiz_app.git
+    ```
+2.  Then please run:
+    ```shell
+    npm install
+    ```
+    This command will install the dependencies and packages that the application requires to run.
 3.  After you're done with the previous steps, go to your terminal or command shell and run the following command:
     ```shell
     npm run docker:up
@@ -147,7 +160,37 @@ And there you go, the app should be app and running in the specified port (:3000
 
 ## How to run the Frontend
 
-1. You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
+### pre-requisites
+
+-   You need to have NodeJS and NPM installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
+
+### steps
+
+1.  First of all, clone this repository:
+    ```shell
+    git clone https://github.com/josesaulguerrero/quiz_app.git
+    ```
+2.  Then please run:
+    ```shell
+    npm install
+    ```
+    This command will install the dependencies and packages that the application requires to run.
+3.  After you're done with the previous steps, go to the **client/** folder. Inside it create a **.env** file and add the following properties variables:
+
+    ```shell
+    REACT_APP_API_BASE_URL=url_to_your_api
+    ```
+
+    This will set up the environment variables, so that the backend will work when you try to run the application. If you try to run the application without having set this variable, you will get lots of errors, be careful.
+
+    **If you don't have an API, then feel free to use mine: https://desolate-everglades-91505.herokuapp.com/**
+
+4.  Finally, run the following command to start the application in watch-mode:
+    ```shell
+    npm run start
+    ```
+
+And now you're done! I hope you enjoyed the process :)
 
 ## Author
 
