@@ -148,15 +148,15 @@ Building this project helped me learn to use and improve my knowledge of some JS
 
     This will read the **.entity.ts** files and create the corresponding tables in the Database.
 
-    **make sure the postgres database service is up running**
+    **make sure the postgres database service is up and running**
 
-6.  Finally, after this long process, you should be able to run the command that will start the server and run the application in **watch mode**
+6.  Finally, after this long process, you should be able to run the command that will start the application in **watch mode**
 
     ```
     npm run start:dev
     ```
 
-And there you go, the app should be app and running in the specified port (:3000) if you didn't set any
+And there you go, the app should be up and running in the specified port (:3000) if you didn't set any
 
 ## How to run the Frontend
 
