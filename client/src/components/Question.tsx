@@ -41,10 +41,11 @@ export const Question: FC<IQuestionProps> = ({
 		if ((selectedAnswer as IAnswer).isCorrect) {
 			// if the chosen answer is correct, then the player points will increase.
 			setIsCorrect(true);
-			setPoints((prevState) => (prevState += 100));
+			setPoints((prevState) => (prevState === 0 ? 10 : (prevState *= 5)));
 			return;
 		}
-		// if the player fails the questions, then he'll immediately lose.
+		// if the player fails the questions, then he'll immediately lose and lose their points.
+		setPoints(0);
 		setIsCorrect(false);
 	};
 

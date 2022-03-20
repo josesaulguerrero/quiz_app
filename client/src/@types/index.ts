@@ -14,6 +14,9 @@ export interface IGameContext {
 	setPoints: React.Dispatch<React.SetStateAction<number>>;
 	points: number;
 
+	setGameOverCause: React.Dispatch<React.SetStateAction<gameOverCauses | null>>;
+	gameOverCause: gameOverCauses | null;
+
 	categories: requestState;
 }
 
@@ -55,6 +58,11 @@ export enum gameRounds {
 	THIRD = 3,
 	FOURTH = 4,
 	FIFTH = 5,
+}
+
+export enum gameOverCauses {
+	QUIT = 'QUIT',
+	FAILED = 'FAILED',
 }
 
 export type requestState = {

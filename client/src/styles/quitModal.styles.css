@@ -9,7 +9,6 @@
 	margin: 0;
 	top: 0;
 	left: 0;
-	background: rgba(0, 0, 0, 0.2);
 	opacity: 0;
 	transform: scale(0);
 }

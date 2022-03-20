@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { gameStates, IGameContext } from '../@types';
+import { gameOverCauses, gameStates, IGameContext } from '../@types';
 import { GameContext } from '../context/game.context';
 // local modules
 import '../styles/quitModal.styles.css';
@@ -10,9 +10,11 @@ interface IQuitModalProps {
 }
 
 export const QuitModal: FC<IQuitModalProps> = ({ isOpen, setIsOpen }) => {
-	const { setGameState, setHasWon } = useContext<IGameContext>(GameContext);
+	const { setGameState, setHasWon, setGameOverCause } =
+		useContext<IGameContext>(GameContext);
 	const onQuit = () => {
 		setGameState(gameStates.GAME_OVER);
+		setGameOverCause(gameOverCauses.QUIT);
 		setHasWon(false);
 	};
 

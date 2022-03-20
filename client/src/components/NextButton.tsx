@@ -1,6 +1,7 @@
 import React, { FC, useContext } from 'react';
 // local modules
 import {
+	gameOverCauses,
 	gameRounds,
 	gameStates,
 	IAnswer,
@@ -23,7 +24,7 @@ export const NextButton: FC<INextButtonProps> = ({
 	setSelectedAnswer,
 	setQuestion,
 }) => {
-	const { setGameState, round, setHasWon, setRound } =
+	const { setGameState, round, setHasWon, setRound, setGameOverCause } =
 		useContext<IGameContext>(GameContext);
 
 	const onFinalRound = () => {
@@ -41,6 +42,7 @@ export const NextButton: FC<INextButtonProps> = ({
 
 	const onWrongAnswer = () => {
 		setGameState(gameStates.GAME_OVER);
+		setGameOverCause(gameOverCauses.FAILED);
 	};
 
 	const onNext = () => {
