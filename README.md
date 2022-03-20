@@ -13,7 +13,6 @@
       - [Backend - API](#backend---api)
       - [Frontend](#frontend)
     - [What I learned](#what-i-learned)
-    - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
   - [How to run the backend - API](#how-to-run-the-backend---api)
   - [How to run the Frontend](#how-to-run-the-frontend)
@@ -90,13 +89,61 @@ Building this project helped me learn to use and improve my knowledge of some JS
 -   Using the useEffect hook to handle my requests to the API.
 -   Creating styles that behave one way or another depending on the logic behind the application.
 
-### Continued development
-
 ### Useful resources
+
+-   [How to Deploy a full-stack app](https://levelup.gitconnected.com/deploy-pern-fullstack-app-on-heroku-and-netlify-automatic-deploy-9b61ac6a254e) - Without this article I wouldn't have been able to deploy the API, it really gives you a lot of useful information.
+-   [Trivia app design](https://dribbble.com/shots/16217895-Quiz-Mobile-App) - I took some inspiration from this design to create my UI.
+-   [How to shuffle an array](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array) - As usual, stack-overflow is a platform where you can find very useful information to solve your problems.
 
 ## How to run the backend - API
 
-1. You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
+1.  You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm).
+    -   After your installation has finished, then please run:
+        ```shell
+        npm install
+        ```
+        With this command you will install the dependencies and packages that the application requires to run.
+2.  You also need to have installed [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/) to run the postgres database.
+3.  After you're done with the previous steps, go to your terminal or command shell and run the following command:
+    ```shell
+    npm run docker:up
+    ```
+    This will tell docker-compose to read the docker-compose.yml file and create the database service.
+4.  Now you should go to the **server/** folder. Inside it create a **.env** file and add the following properties variables:
+
+    ```shell
+    DATABASE_URL=postgres://admin:admin_password@localhost:5432/quiz_app
+    ```
+
+    This will set up the environment variables, so that the backend will work when you try to run the application. If you try to run the application without having set this variable, you will get lots of errors, be careful.
+
+    **Remember, the value of DATABASE_URL MUST match the properties set in the docker-compose.yml file**
+
+    -   Optionally, you can set another environment variable.
+
+        ```shell
+        PORT=8000
+        ```
+
+        This variable tells the server in which port it should run when you start the application.
+
+5.  After you run all of these commands and set the required variables, then you should be able to run the **ORM migrations**. Run the following command:
+
+    ```shell
+    npm run migrations:generate -- "initial_migration" && npm run migrations:run
+    ```
+
+    This will read the **.entity.ts** files and create the corresponding tables in the Database.
+
+    **make sure the postgres database service is up running**
+
+6.  Finally, after this long process, you should be able to run the command that will start the server and run the application in **watch mode**
+
+    ```
+    npm run start:dev
+    ```
+
+And there you go, the app should be app and running in the specified port (:3000) if you didn't set any
 
 ## How to run the Frontend
 
