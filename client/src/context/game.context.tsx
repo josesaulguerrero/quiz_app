@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, FC, useEffect, useState } from 'react';
 // local modules
 import {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { FC, useContext, useEffect, useState } from 'react';
 // local modules
 import { IBasicCategory, ICategory, IGameContext, IQuestion } from '../@types';
