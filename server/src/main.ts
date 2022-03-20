@@ -16,6 +16,7 @@ async function bootstrap() {
 		methods: '*',
 		allowedHeaders: '*',
 	});
+	app.setGlobalPrefix('/api/v1');
 	await app.listen(parseInt(process.env.PORT) || 3000, () => {
 		console.log(`app running at port ${process.env.PORT}`);
 	});
